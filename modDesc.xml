@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="42">
+	<author>*TurboStar* | LS-Modcompany</author>
+    <version>1.0.0.0</version>
+    <title>
+		<en>Player Speed</en>
+    </title>
+    <description>
+        <it><![CDATA[Questa mod permette di impostare diverse velocità di camminata al farmer.
+Velocità disponibili: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
+		</it>
+		<en><![CDATA[This mod allows you to set different walking speeds for the farmer.
+Available speeds: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
+		</en>
+		<de><![CDATA[Mit diesem Mod kannst du verschiedene Spielergeschwindigkeiten einstellen.
+Verfügbare Geschwindigkeiten: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
+		</de>
+		<es> <![CDATA[Este mod permite que usted fije diversas velocidades de caminar al granjero.
+Velocidades disponibles: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
+		</es>
+    </description>
+    <iconFilename>store.png</iconFilename>
+    <multiplayer supported="true"/>
+    <extraSourceFiles>
+        <sourceFile filename="SpeedPlayer.lua" />
+    </extraSourceFiles>
+	
+	<l10n>
+		<text name="key0">  		<en>SpeedPlayer: Standard speed</en><de>SpeedPlayer: Normale Geschwindigkeit</de><it>SpeedPlayer: Velocità standard</it><es>SpeedPlayer: Velocidad normal</es></text>
+		<text name="key1">  		<en>SpeedPlayer: Speed x3</en><de>SpeedPlayer: Geschwindigkeit x3</de><it>SpeedPlayer: Velocità x3</it><es>SpeedPlayer: Velocidad x3</es></text>	
+		<text name="key2">  		<en>SpeedPlayer: Speed x8</en><de>SpeedPlayer: Geschwindigkeit x8</de><it>SpeedPlayer: Velocità x8</it><es>SpeedPlayer: Velocidad x8</es></text>	
+		<text name="key15">  		<en>SpeedPlayer: Speed x15</en><de>SpeedPlayer: Geschwindigkeit x15</de><it>SpeedPlayer: Velocità x15</it><es>SpeedPlayer: Velocidad x15</es></text>
+		<text name="key3">  		<en>SpeedPlayer: Speed x20</en><de>SpeedPlayer: Geschwindigkeit x20</de><it>SpeedPlayer: Velocità x20</it><es>SpeedPlayer: Velocidad x20</es></text>
+		<text name="keyslow1">		<en>SpeedPlayer: Speed x0.7</en><de>SpeedPlayer: Geschwindigkeit x0.7</de><it>SpeedPlayer: Velocità x0.7</it><es>SpeedPlayer: Velocidad x0.7</es></text>	
+		<text name="keyslow2">		<en>SpeedPlayer: Speed x0.5</en><de>SpeedPlayer: Geschwindigkeit x0.5</de><it>SpeedPlayer: Velocità x0.5</it><es>SpeedPlayer: Velocidad x0.5</es></text>	
+		<text name="keyslow3"> 		<en>SpeedPlayer: Speed x0.2</en><de>SpeedPlayer: Geschwindigkeit x0.2</de><it>SpeedPlayer: Velocità x0.2</it><es>SpeedPlayer: Velocidad x0.2</es></text>
+		<text name="othermod">  	<en>Farmer speed not handled by SpeedPlayer Mod</en><de><![CDATA[Geschwindigkeit nicht von SpeedPlayer Mod abhängig]]></de><it><![CDATA[Velocità del farmer non gestita da SpeedPlayer Mod]]></it><es><![CDATA[La velocidad no está controlada por SpeedPlayer]]></es></text>
+
+		<text name="input_SPEEDMINUS">   <en>SpeedPlayer: Decrease speed</en><de>SpeedPlayer: Geschwindigkeit reduzieren</de><it>SpeedPlayer: Diminuisci velocità</it></text>
+		<text name="input_SPEEDPLUS">   <en>SpeedPlayer: Increase speed</en><de>SpeedPlayer: Geschwindigkeit erhöhen</de><it>SpeedPlayer: Aumenta velocità</it></text>
+	</l10n>
+	
+	<inputBinding>
+		<actionBinding action="SPEEDMINUS">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_v" />
+		</actionBinding>
+		<actionBinding action="SPEEDPLUS">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_b" />
+		</actionBinding>
+	</inputBinding>
+	<actions>
+		<action name="SPEEDMINUS" />
+		<action name="SPEEDPLUS" />
+	</actions>
+
+</modDesc>
