@@ -7,10 +7,10 @@ You are looking at the ***DEVELOPMENT VERSION*** of the Player Speed Mod. To pla
 This version might break the game.
 
 ## How it works
-Hit `v` key to reduce the player speed.
+Hit `V` key to reduce the player speed.
 
-Hit `b` key to increase the player speed.
+Hit `B` key to increase the player speed.
 
 ## Copyright
-Copyright (c) 2019 \*Turbostar*  
+Copyright (c) 2019 \*TurboStar*  
 All rights reserved.
