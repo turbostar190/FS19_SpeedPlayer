@@ -3,6 +3,7 @@
 -- Refactored from FS17, FS19 by *TurboStar* | LS Modcompany
 
 -- V1.0.0.0  		Initial release
+-- V1.1.0.0
 
 SpeedPlayer = {}
 
@@ -12,11 +13,15 @@ function SpeedPlayer:loadMap(...)
 	self.SPEEDSLENGTH = table.getn(self.SPEEDS)
 	self.TEXTS = {[0.8] = "keyslow3", [2.0] = "keyslow2", [4.0*0.7] = "keyslow1", [4.0] = "key0", [12.0] = "key1", [32.0] = "key2", [60.0] = "key15", [80.0] = "key3", ["other"] = "othermod"}
 	self.cont = 4
-	self.eventIdReduce = ""
-	self.eventIdIncrease = ""
-	self.inputsActive = false
+	self.eventIdReduce, self.eventIdIncrease = "", ""
 	self.errorDisplayed = false
 end
+
+function SpeedPlayer:registerActionEvents()
+	_, SpeedPlayer.eventIdReduce = g_inputBinding:registerActionEvent(InputAction.SPEEDMINUS, SpeedPlayer, SpeedPlayer.reduceSpeed, false, true, false, false, -1, true)
+	_, SpeedPlayer.eventIdIncrease = g_inputBinding:registerActionEvent(InputAction.SPEEDPLUS, SpeedPlayer, SpeedPlayer.incrementSpeed, false, true, false, false, 1, true)
+end
+Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, SpeedPlayer.registerActionEvents);
 
 function SpeedPlayer:deleteMap()
 end
@@ -27,19 +32,19 @@ end
 function SpeedPlayer:keyEvent(...)
 end
 
-function SpeedPlayer:reduceSpeed()
+function SpeedPlayer:reduceSpeed(...)
 	if (self.cont == 1) then return end
 	self.cont = self.cont - 1
 	
-	local speed = self.SPEEDS[self.cont]
-	SpeedPlayer:setSpeed(speed)
+	local spe = self.SPEEDS[self.cont]
+	SpeedPlayer:setSpeed(spe)
 end
 function SpeedPlayer:incrementSpeed()
 	if (self.cont == self.SPEEDSLENGTH) then return end
 	self.cont = self.cont + 1
 	
-	local speed = self.SPEEDS[self.cont]
-	SpeedPlayer:setSpeed(speed)
+	local spe = self.SPEEDS[self.cont]
+	SpeedPlayer:setSpeed(spe)
 end
 
 function SpeedPlayer:setSpeed(speed)
@@ -66,35 +71,16 @@ function SpeedPlayer:update(dt)
 				return
 			end
 			
-			if not self.inputsActive then -- register input events
-				_, self.eventIdReduce = g_inputBinding:registerActionEvent(InputAction.SPEEDMINUS, SpeedPlayer, SpeedPlayer.reduceSpeed, false, true, false, false)
-				_, self.eventIdIncrease = g_inputBinding:registerActionEvent(InputAction.SPEEDPLUS, SpeedPlayer, SpeedPlayer.incrementSpeed, false, true, false, false)
-				self.inputsActive = true
-			end
-				
 			local eventIdReduce = self.eventIdReduce
 			local eventIdIncrease = self.eventIdIncrease
 			
-			if self.cont == 1 then
-				-- disable and hide reduce speed button
-				g_inputBinding:setActionEventActive(eventIdReduce, false)
-				g_inputBinding:setActionEventTextVisibility(eventIdReduce, false)
-			elseif self.cont == self.SPEEDSLENGTH then 
-				-- disable and hide increase speed button
-				g_inputBinding:setActionEventActive(eventIdIncrease, false)
-				g_inputBinding:setActionEventTextVisibility(eventIdIncrease, false)
-			else
-				-- show both buttons
-				g_inputBinding:setActionEventActive(eventIdReduce, true)
-				g_inputBinding:setActionEventTextVisibility(eventIdReduce, true)
-				g_inputBinding:setActionEventActive(eventIdIncrease, true)
-				g_inputBinding:setActionEventTextVisibility(eventIdIncrease, true)
-			end
+			g_inputBinding:setActionEventActive(eventIdReduce, SpeedPlayer.cont ~= 1)
+			g_inputBinding:setActionEventTextVisibility(eventIdReduce, SpeedPlayer.cont ~= 1)
+			g_inputBinding:setActionEventActive(eventIdIncrease, SpeedPlayer.cont ~= SpeedPlayer.SPEEDSLENGTH)
+			g_inputBinding:setActionEventTextVisibility(eventIdIncrease, SpeedPlayer.cont ~= SpeedPlayer.SPEEDSLENGTH)
 			
 			local info = g_currentMission.player.motionInformation
 			if self.TEXTS[info.maxWalkingSpeed] ~= nil then g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS[info.maxWalkingSpeed])) else g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS["other"])) end
-		else
-			self.inputsActive = false
 		end
 		
 	end
