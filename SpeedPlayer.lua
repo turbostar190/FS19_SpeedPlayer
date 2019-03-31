@@ -32,7 +32,7 @@ end
 function SpeedPlayer:keyEvent(...)
 end
 
-function SpeedPlayer:reduceSpeed(...)
+function SpeedPlayer:reduceSpeed()
 	if (self.cont == 1) then return end
 	self.cont = self.cont - 1
 	
