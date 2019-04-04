@@ -9,7 +9,7 @@ SpeedPlayer = {}
 
 function SpeedPlayer:loadMap(...)
 	self.SPEEDS = {0.8, 2.0, 4.0*0.7, 4.0, 12.0, 32.0, 60.0, 80.0} -- m/s
-	self.SPEEDSLENGTH = table.getn(self.SPEEDS)
+	self.SPEEDSLENGTH = #self.SPEEDS
 	self.TEXTS = {[0.8] = "keyslow3", [2.0] = "keyslow2", [4.0*0.7] = "keyslow1", [4.0] = "key0", [12.0] = "key1", [32.0] = "key2", [60.0] = "key15", [80.0] = "key3", ["other"] = "othermod"}
 	self.cont = 4
 	self.eventIdReduce, self.eventIdIncrease = "", ""
@@ -20,7 +20,7 @@ function SpeedPlayer:registerActionEvents()
 	_, SpeedPlayer.eventIdReduce = g_inputBinding:registerActionEvent(InputAction.SPEEDMINUS, SpeedPlayer, SpeedPlayer.reduceSpeed, false, true, false, false, -1, true)
 	_, SpeedPlayer.eventIdIncrease = g_inputBinding:registerActionEvent(InputAction.SPEEDPLUS, SpeedPlayer, SpeedPlayer.incrementSpeed, false, true, false, false, 1, true)
 end
-Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, SpeedPlayer.registerActionEvents);
+Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, SpeedPlayer.registerActionEvents)
 
 function SpeedPlayer:deleteMap()
 end
@@ -31,23 +31,27 @@ end
 function SpeedPlayer:keyEvent(...)
 end
 
+--- Event callback used to reduce cont, so the speed
 function SpeedPlayer:reduceSpeed()
 	if (self.cont == 1) then return end
 	self.cont = self.cont - 1
 	-- g_inputBinding.events[SpeedPlayer.eventIdReduce].callbackState is -1 here
 	
 	local spe = self.SPEEDS[self.cont]
-	SpeedPlayer:setSpeed(spe)
+	self:setSpeed(spe)
 end
+--- Event callback used to increase cont, so the speed
 function SpeedPlayer:incrementSpeed()
 	if (self.cont == self.SPEEDSLENGTH) then return end
 	self.cont = self.cont + 1
 	-- g_inputBinding.events[SpeedPlayer.eventIdIncrease].callbackState is 1 here
 	
 	local spe = self.SPEEDS[self.cont]
-	SpeedPlayer:setSpeed(spe)
+	self:setSpeed(spe)
 end
 
+--- Set speed changing each player informations
+-- @param speed of the player (m/s)
 function SpeedPlayer:setSpeed(speed)
 	local info = g_currentMission.player.motionInformation
 	if speed ~= nil then 
@@ -56,7 +60,7 @@ function SpeedPlayer:setSpeed(speed)
 		info.maxSwimmingSpeed = tonumber(speed / (4/3))
 		info.maxCrouchingSpeed = tonumber(speed / 2)
 		info.maxFallingSpeed = tonumber(speed * 1.5)
-		info.maxCheatRunningSpeed = tonumber(speed * (34/4))
+		-- info.maxCheatRunningSpeed = tonumber(speed * (34/4)) -- We keep cheats run at 34 m/s
 	end
 end
 
