@@ -22,15 +22,6 @@ function SpeedPlayer:registerActionEvents()
 end
 Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, SpeedPlayer.registerActionEvents)
 
-function SpeedPlayer:deleteMap()
-end
-
-function SpeedPlayer:mouseEvent(...)
-end
-
-function SpeedPlayer:keyEvent(...)
-end
-
 --- Event callback used to reduce cont, so the speed
 function SpeedPlayer:reduceSpeed()
 	if (self.cont == 1) then return end
@@ -84,13 +75,14 @@ function SpeedPlayer:update(dt)
 			g_inputBinding:setActionEventTextVisibility(eventIdIncrease, SpeedPlayer.cont ~= SpeedPlayer.SPEEDSLENGTH)
 			
 			local info = g_currentMission.player.motionInformation
-			if self.TEXTS[info.maxWalkingSpeed] ~= nil then g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS[info.maxWalkingSpeed])) else g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS["other"])) end
+			if self.TEXTS[info.maxWalkingSpeed] ~= nil then
+				g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS[info.maxWalkingSpeed]))
+			else
+				g_currentMission:addExtraPrintText(g_i18n:getText(self.TEXTS["other"]))
+			end
 		end
 		
 	end
-end
-
-function SpeedPlayer:draw()
 end
 
 print("  Loaded SpeedPlayer Mod...")
