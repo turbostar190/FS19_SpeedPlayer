@@ -3,7 +3,7 @@
 -- Refactored from FS17, FS19 by *TurboStar* | LS Modcompany
 
 -- V1.0.0.0  		Initial release
--- V1.1.0.0
+-- V1.1.0.0			Adjusted values to patch 1.4.1.0
 
 SpeedPlayer = {}
 
@@ -11,14 +11,21 @@ function SpeedPlayer:loadMap(...)
 	self.SPEEDS = {0.8, 2.0, 4.0*0.7, 4.0, 12.0, 32.0, 60.0, 80.0} -- m/s
 	self.SPEEDSLENGTH = #self.SPEEDS
 	self.TEXTS = {[0.8] = "keyslow3", [2.0] = "keyslow2", [4.0*0.7] = "keyslow1", [4.0] = "key0", [12.0] = "key1", [32.0] = "key2", [60.0] = "key15", [80.0] = "key3", ["other"] = "othermod"}
-	self.cont = 4
+	self.cont = 4 -- It starts with default speed
 	self.eventIdReduce, self.eventIdIncrease = "", ""
-	self.errorDisplayed = false
+	self.errorDisplayed, self.firstTime = false, true
 end
 
 function SpeedPlayer:registerActionEvents()
-	_, SpeedPlayer.eventIdReduce = g_inputBinding:registerActionEvent(InputAction.SPEEDMINUS, SpeedPlayer, SpeedPlayer.reduceSpeed, false, true, false, false, -1, true)
-	_, SpeedPlayer.eventIdIncrease = g_inputBinding:registerActionEvent(InputAction.SPEEDPLUS, SpeedPlayer, SpeedPlayer.incrementSpeed, false, true, false, false, 1, true)
+	if self.isClient then
+		if SpeedPlayer.firstTime then
+			local spe = SpeedPlayer.SPEEDS[4]
+			SpeedPlayer.setSpeed(spe)
+			SpeedPlayer.firstTime = false
+		end
+		_, SpeedPlayer.eventIdReduce = g_inputBinding:registerActionEvent(InputAction.SPEEDMINUS, SpeedPlayer, SpeedPlayer.reduceSpeed, false, true, false, false, -1, true)
+		_, SpeedPlayer.eventIdIncrease = g_inputBinding:registerActionEvent(InputAction.SPEEDPLUS, SpeedPlayer, SpeedPlayer.incrementSpeed, false, true, false, false, 1, true)
+	end
 end
 Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, SpeedPlayer.registerActionEvents)
 
@@ -29,7 +36,7 @@ function SpeedPlayer:reduceSpeed()
 	-- g_inputBinding.events[SpeedPlayer.eventIdReduce].callbackState is -1 here
 	
 	local spe = self.SPEEDS[self.cont]
-	self:setSpeed(spe)
+	self.setSpeed(spe)
 end
 --- Event callback used to increase cont, so the speed
 function SpeedPlayer:incrementSpeed()
@@ -38,27 +45,28 @@ function SpeedPlayer:incrementSpeed()
 	-- g_inputBinding.events[SpeedPlayer.eventIdIncrease].callbackState is 1 here
 	
 	local spe = self.SPEEDS[self.cont]
-	self:setSpeed(spe)
+	self.setSpeed(spe)
 end
 
 --- Set speed changing each player informations
 -- @param speed of the player (m/s)
-function SpeedPlayer:setSpeed(speed)
+function SpeedPlayer.setSpeed(speed)
 	local info = g_currentMission.player.motionInformation
 	if speed ~= nil then 
+		-- Ratio taken from default speeds
 		info.maxWalkingSpeed = tonumber(speed)
 		info.maxRunningSpeed = tonumber(speed * (9/4))
-		info.maxSwimmingSpeed = tonumber(speed / (4/3))
+		info.maxSwimmingSpeed = tonumber(speed * (3/4))
 		info.maxCrouchingSpeed = tonumber(speed / 2)
 		info.maxFallingSpeed = tonumber(speed * 1.5)
-		-- info.maxCheatRunningSpeed = tonumber(speed * (34/4)) -- We keep cheats run at 34 m/s
+		info.maxCheatRunningSpeed = info.maxRunningSpeed -- Same as maxRunningSpeed, FS19_cheatsPlayerWalkspeedReset.zip by modelleicher is overwritten anyway
 	end
 end
 
 function SpeedPlayer:update(dt)
 	if g_currentMission:getIsClient() then -- don't run on the Dedicated Server itself
 		if g_gui.currentGui == nil and g_currentMission.controlledVehicle == nil then -- only if no vehicle is entered or menu is up
-		
+
 			if (self.cont ~= nil and (self.cont < 1 or self.cont > self.SPEEDSLENGTH)) or self.cont == nil then
 				if not self.errorDisplayed then 
 					print("SpeedPlayer: something is wrong on SpeedPlayer.cont ... Aborting functionality. Please report your log.txt")
@@ -85,5 +93,5 @@ function SpeedPlayer:update(dt)
 	end
 end
 
-print("  Loaded SpeedPlayer Mod...")
+print("  Loading SpeedPlayer Mod...")
 addModEventListener(SpeedPlayer)

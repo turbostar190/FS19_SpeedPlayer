@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="43">
+<modDesc descVersion="44">
 	<author>*TurboStar* | LS-Modcompany</author>
     <version>1.1.0.0</version>
     <title>
 		<en>Player Speed</en>
     </title>
     <description>
-        <it><![CDATA[Questa mod permette di impostare diverse velocità di camminata al farmer.
-Velocità disponibili: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
-		</it>
 		<en><![CDATA[This mod allows you to set different walking speeds for the farmer.
-Available speeds: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
-		</en>
+Available speeds: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20
+
+Changelog v1.1.0.0:
+- There isn't anymore a different cheat running speed
+- Various improvements]]></en>
 		<de><![CDATA[Mit diesem Mod kannst du verschiedene Spielergeschwindigkeiten einstellen.
-Verfügbare Geschwindigkeiten: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
-		</de>
-		<es> <![CDATA[Este mod permite que usted fije diversas velocidades de caminar al granjero.
-Velocidades disponibles: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20]]>
-		</es>
+Verfügbare Geschwindigkeiten: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20
+
+Changelog v1.1.0.0:
+- There isn't anymore a different cheat running speed
+- Various improvements]]></de>
+		<it><![CDATA[Questa mod permette di impostare diverse velocità di camminata al farmer.
+Velocità disponibili: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20
+
+Changelog v1.1.0.0:
+- There isn't anymore a different cheat running speed
+- Various improvements]]></it>
+		<es><![CDATA[Este mod permite que usted fije diversas velocidades de caminar al granjero.
+Velocidades disponibles: x0.2, x0.5, x0.7, standard, x3, x8, x15, x20
+
+Changelog v1.1.0.0:
+- There isn't anymore a different cheat running speed
+- Various improvements]]></es>
     </description>
     <iconFilename>store.png</iconFilename>
     <multiplayer supported="true"/>
