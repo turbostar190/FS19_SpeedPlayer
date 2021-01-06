@@ -34,6 +34,13 @@ Changelog v1.1.0.0:
 - There isn't anymore a different cheat running speed
 - Various improvements]]>
 		</es>
+	    	<fr><![CDATA[Ce mod permet de choisir différentes vitesses d'avancement pour votre personnage lorsqu'il est à pied.
+Vitesses disponibles : x0.2, x0.5, x0.7, standard, x3, x8, x15, x20
+
+Changelog v1.1.0.0:
+- There isn't anymore a different cheat running speed
+- Various improvements]]>
+		</fr>
     </description>
     <iconFilename>store.png</iconFilename>
     <multiplayer supported="true"/>
@@ -42,18 +49,18 @@ Changelog v1.1.0.0:
     </extraSourceFiles>
 	
 	<l10n>
-		<text name="key0">  		<en>SpeedPlayer: Standard speed</en><de>SpeedPlayer: Normale Geschwindigkeit</de><it>SpeedPlayer: Velocità standard</it><es>SpeedPlayer: Velocidad normal</es></text>
-		<text name="key1">  		<en>SpeedPlayer: Speed x3</en><de>SpeedPlayer: Geschwindigkeit x3</de><it>SpeedPlayer: Velocità x3</it><es>SpeedPlayer: Velocidad x3</es></text>	
-		<text name="key2">  		<en>SpeedPlayer: Speed x8</en><de>SpeedPlayer: Geschwindigkeit x8</de><it>SpeedPlayer: Velocità x8</it><es>SpeedPlayer: Velocidad x8</es></text>	
-		<text name="key15">  		<en>SpeedPlayer: Speed x15</en><de>SpeedPlayer: Geschwindigkeit x15</de><it>SpeedPlayer: Velocità x15</it><es>SpeedPlayer: Velocidad x15</es></text>
-		<text name="key3">  		<en>SpeedPlayer: Speed x20</en><de>SpeedPlayer: Geschwindigkeit x20</de><it>SpeedPlayer: Velocità x20</it><es>SpeedPlayer: Velocidad x20</es></text>
-		<text name="keyslow1">		<en>SpeedPlayer: Speed x0.7</en><de>SpeedPlayer: Geschwindigkeit x0.7</de><it>SpeedPlayer: Velocità x0.7</it><es>SpeedPlayer: Velocidad x0.7</es></text>	
-		<text name="keyslow2">		<en>SpeedPlayer: Speed x0.5</en><de>SpeedPlayer: Geschwindigkeit x0.5</de><it>SpeedPlayer: Velocità x0.5</it><es>SpeedPlayer: Velocidad x0.5</es></text>	
-		<text name="keyslow3"> 		<en>SpeedPlayer: Speed x0.2</en><de>SpeedPlayer: Geschwindigkeit x0.2</de><it>SpeedPlayer: Velocità x0.2</it><es>SpeedPlayer: Velocidad x0.2</es></text>
-		<text name="othermod">  	<en>Farmer speed not handled by SpeedPlayer Mod</en><de><![CDATA[Geschwindigkeit nicht von SpeedPlayer Mod abhängig]]></de><it><![CDATA[Velocità del farmer non gestita da SpeedPlayer Mod]]></it><es><![CDATA[La velocidad no está controlada por SpeedPlayer]]></es></text>
+		<text name="key0">  		<en>SpeedPlayer: Standard speed</en><de>SpeedPlayer: Normale Geschwindigkeit</de><it>SpeedPlayer: Velocità standard</it><es>SpeedPlayer: Velocidad normal</es></text><fr>SpeedPlayer: Vitesse standard</fr>
+		<text name="key1">  		<en>SpeedPlayer: Speed x3</en><de>SpeedPlayer: Geschwindigkeit x3</de><it>SpeedPlayer: Velocità x3</it><es>SpeedPlayer: Velocidad x3</es></text><fr>SpeedPlayer: Vitesse x3</fr>
+		<text name="key2">  		<en>SpeedPlayer: Speed x8</en><de>SpeedPlayer: Geschwindigkeit x8</de><it>SpeedPlayer: Velocità x8</it><es>SpeedPlayer: Velocidad x8</es></text><fr>SpeedPlayer: Vitesse x8</fr>
+		<text name="key15">  		<en>SpeedPlayer: Speed x15</en><de>SpeedPlayer: Geschwindigkeit x15</de><it>SpeedPlayer: Velocità x15</it><es>SpeedPlayer: Velocidad x15</es></text><fr>SpeedPlayer: Vitesse x15</fr>
+		<text name="key3">  		<en>SpeedPlayer: Speed x20</en><de>SpeedPlayer: Geschwindigkeit x20</de><it>SpeedPlayer: Velocità x20</it><es>SpeedPlayer: Velocidad x20</es></text><fr>SpeedPlayer: Vitesse x20</fr>
+		<text name="keyslow1">		<en>SpeedPlayer: Speed x0.7</en><de>SpeedPlayer: Geschwindigkeit x0.7</de><it>SpeedPlayer: Velocità x0.7</it><es>SpeedPlayer: Velocidad x0.7</es></text><fr>SpeedPlayer: Vitesse x0.7</fr>
+		<text name="keyslow2">		<en>SpeedPlayer: Speed x0.5</en><de>SpeedPlayer: Geschwindigkeit x0.5</de><it>SpeedPlayer: Velocità x0.5</it><es>SpeedPlayer: Velocidad x0.5</es></text><fr>SpeedPlayer: Vitesse x0.5</fr>
+		<text name="keyslow3"> 		<en>SpeedPlayer: Speed x0.2</en><de>SpeedPlayer: Geschwindigkeit x0.2</de><it>SpeedPlayer: Velocità x0.2</it><es>SpeedPlayer: Velocidad x0.2</es></text><fr>SpeedPlayer: Vitesse x0.2</fr>
+		<text name="othermod">  	<en>Farmer speed not handled by SpeedPlayer Mod</en><de><![CDATA[Geschwindigkeit nicht von SpeedPlayer Mod abhängig]]></de><it><![CDATA[Velocità del farmer non gestita da SpeedPlayer Mod]]></it><es><![CDATA[La velocidad no está controlada por SpeedPlayer]]></es><en>La vitesse du personnage n'est pas controlée par le mod SpeedPlayer</en></text>
 
-		<text name="input_SPEEDMINUS">   <en>SpeedPlayer: Decrease speed</en><de>SpeedPlayer: Geschwindigkeit reduzieren</de><it>SpeedPlayer: Diminuisci velocità</it></text>
-		<text name="input_SPEEDPLUS">   <en>SpeedPlayer: Increase speed</en><de>SpeedPlayer: Geschwindigkeit erhöhen</de><it>SpeedPlayer: Aumenta velocità</it></text>
+		<text name="input_SPEEDMINUS">   <en>SpeedPlayer: Decrease speed</en><de>SpeedPlayer: Geschwindigkeit reduzieren</de><it>SpeedPlayer: Diminuisci velocità</it></text><fr>SpeedPlayer: Réduire la vitesse</fr>
+		<text name="input_SPEEDPLUS">   <en>SpeedPlayer: Increase speed</en><de>SpeedPlayer: Geschwindigkeit erhöhen</de><it>SpeedPlayer: Aumenta velocità</it></text><fr>SpeedPlayer: Augmenter la vitesse</fr>
 	</l10n>
 	
 	<inputBinding>
